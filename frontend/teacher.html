@@ -8,61 +8,7 @@
 
 
 	
-	<script>
-var app = angular.module('teacher', []);
-app.controller('list', function($scope, $http) {
-  	console.log(sessionStorage.getItem("id"));
-	var url = "http://127.0.0.1:8000/teacherdashboard/";
- 	 $http({
-			 method : "GET",
-			url : url
-  			}).then(function mySuccess(response) {
-      		let user=response.data;
-     		 $scope.users=response.data;
-
-      		console.table(response.data);
-      		console.log(user[0]['username']);
- 			alert("Wellcome ");
-     		}, function myError(response) {
-      		alert(response.statusText);
-  		});
-
-
- 	 $scope.delete=function(id){
-  	 	$http({
-   		 method : "POST",
-    	data : JSON.stringify({"id" : id}),
-    	url : "http://127.0.0.1:8000/deleteStudent/"
-  		}).then(function mySuccess(response) {
-		alert(response.data);
-        console.log(response.data);
-      
- 	
-     	}, function myError(response) {
-      	alert(response.statusText);
- 		 	});
- 	  };
-  		
-
- 	 $scope.update=function(id){
-  		 $http({
-   			 method : "POST",
-    		 data : JSON.stringify({"id" : id}),
-   			 url : "http://127.0.0.1:8000/deleteStudent/"
- 		 }).then(function mySuccess(response) {
-		alert(response.data);
-      	console.log(response.data);
-      	
-      	}, function myError(response) {
-     	 alert(response.statusText);
-  			});
-  	  };
-
-  });
-		
-
-
-
+	<script src="teacher.js">
 
 </script>
 
@@ -84,32 +30,32 @@ app.controller('list', function($scope, $http) {
  <table id="table">
  	<tr>
  		<th>Id</th>
-    <th>Roll. no.</th>
  		<th>Student name</th>
-    <th>Username</th>
- 		<th>Section</th>
+   		 <th>Username</th>
+ 		
+   		 <th>Year</th>
  		<th>Branch</th>
  		<th>Email Id</th>
- 		<th>Phone No.</th>
+ 		<th>CONTACT</th>
  		<th>Update </th>
-    <th>Delete</th>
+    	<th>Delete</th>
  
  	</tr>
- 	<tr ng-repeat="x in users">
-        <td>{{x.id}}</td>
-        <td>{{x.roll_no}}</td>
-        <td>{{x.first_name}} {{last_name}}</td>
-        <td>{{x.username}}</td>
-        <td>{{x.section}}</td>
-        <td>{{x.branch}}</td>
-        <td>{{x.email}}</td>
-        <td>{{x.phone_no}}</td>
+ 	<tr ng-repeat="student in students">
+        <td>{{student.id}}</td>
+        <td>{{student.FIRST_NAME}} {{student.LAST_NAME}}</td>
+        <td>{{student.USERNAME}}</td>
+        <td>{{student.YEAR}}</td>
+
+        <td>{{student.BRANCH}}</td>
+        <td>{{student.EMAIL}}</td>
+        <td>{{student.CONTACT}}</td>
 
     
 
     
-<td><button name="updateBtn" class="updateBtn" type="button" ng-click="update({{x.id}})">Update</button></td>
-<td><button name="deleteBtn" class="deleteBtn" type="button" ng-click="delete({{x.id}})">Delete</button> </td>
+<td><button name="updateBtn" class="updateBtn" type="button" ng-click="redirect_to_update(student.id)">Update</button></td>
+<td><button name="deleteBtn" class="deleteBtn" type="button" ng-click="delete(student.id)">Delete</button> </td>
 </tr>
 	
 

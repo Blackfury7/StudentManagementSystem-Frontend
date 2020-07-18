@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Query List</title>
+
+	<link rel="stylesheet" href="teacher.css">
+	<link rel="stylesheet" href="query.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+	<script type="text/javascript" src="query.js"></script>
+
+
+</head>
+<body>
+
+	<div ng-app="query" ng-controller="list">
+	<h1>List of students who raised Queries</h1><br>
+
+<span><h2 >Total number of pending Queries : <span id="queryCount">{{query_num}}</span></h2></span>
+<a onclick="window.history.back()" class="button" style="vertical-align:middle"><span> Back</span></a><br><br>
+	<table id= "table">
+ 	<tr>
+ 		    
+ 		<th>Student name</th>
+    <th>Username</th>
+ 		<th>Branch</th>
+ 		<th>Year</th>
+ 		<th>Email Id</th>
+ 		<th>Phone No.</th>
+ 		<th>Date/time </th>
+ 		
+
+    <th>Answer Query </th>
+ 
+ 	</tr>
+ 	<tr ng-repeat="query in queries">
+        <td>{{query.id}}</td>
+        <td>{{query.FIRST_NAME}} {{query.LAST_NAME}}</td>
+        <td>{{query.USERNAME}}</td>
+        <td>{{query.YEAR}}</td>
+
+        <td>{{query.BRANCH}}</td>
+        <td>{{query.EMAIL}}</td>
+        <td>{{query.CONTACT}}</td>
+
+<td><button name="viewBtn" class="viewBtn" type="button" ng-click="redirect_to_query(query.id)">View Query</button></td>
+
+      
+
+ 				
+		
+	</table>
+
+
+</div>
+
+</body>
+</html>

@@ -16,7 +16,7 @@ app.controller('myCtrl', function($scope, $http) {
   $http({
     method : "POST",
     data: data,
-    url : url
+    url : "http://d191f9defd49.ngrok.io/teacher/login/"
   }).then(function mySuccess(response) {
       alert(response.data);
       console.log(response);

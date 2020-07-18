@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Add Student</title>
+	<title>Update Student</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
 	<link rel="stylesheet" href="teacher.css">
 
@@ -10,12 +10,14 @@
 </head>
 <body>
 
-		<h1>Add Student </h1>
+		<h1>Update student details </h1>
 
 
 			
-		<div id="addStudentDetails" ng-app="teacher" ng-controller="add_student">
+		<div id="UpdateStudentDetails" ng-app="teacher" ng-controller="update_student">
 			
+				<!-- <label for="Id">Id :</label>{{update_id}}	<br><br> -->
+
 				<label for="first_name">First name :</label>
 				<input id="first_name" type="text" ng-model="first_name" placeholder="First name" required><br><br><br>
 			
@@ -23,18 +25,21 @@
 				<label for="last-name">Last name :</label>
 				<input id ="last_name" type="text"  ng-model="last_name" placeholder="Last Name" ><br><br>
 
-
+				
 				<label for="username">Username :</label>
-				<input id="username" type="text" ng-model="username" placeholder="Username" required><br><br><br>
+				<input id="username" type="text" ng-model="username" placeholder="username" required><br><br><br>
 			
-				<label for="branch">Branch :</label>
-				<select name="branch" id="branch" ng-model="branch">
+
+			<label for="branch">Branch :</label>
+
+			<select name="branch" id="branch" ng-model="branch">
 				<option value="CSE">CSE</option>
 				<option value="CO">CO</option>
 				<option value="IT">IT</option>
 				<option value="CSIT">CSIT</option>
 				<option value="ME">ME</option>
-				</select><br><br>
+
+			</select><br><br>
 				
 				<label for="year">Year :</label>
 				<select name="year" id="year" ng-model="year">
@@ -43,6 +48,8 @@
 				<option value="3">3</option>
 				<option value="4">4</option>
 				</select><br><br>
+
+
 
 				<label for="email">Email Id :</label>
 					<input id="email" type="email" ng-model="email" placeholder="xyz@gmail.com" required><br><br><br>
@@ -59,14 +66,13 @@
 
 				
 					
-					<button type="button" ng-click= "addStudent()" >SUBMIT</button>
+					<button type="button" ng-click = "updateStudent()" >SUBMIT</button>
 					<a onclick="window.history.back()" class="button" style="vertical-align:middle"><span> Back</span></a>
 
 
 
 
 </div>
-
 
 
 </body>

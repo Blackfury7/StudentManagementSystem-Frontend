@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="teacher.css">
+<link rel="stylesheet" type="text/css" href="query.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+
+<script type="text/javascript" src="query.js"></script>
+
+
+
+
+</head>
+<body>
+
+<h3>Query Form</h3>
+
+<div class="container" ng-app="query" ng-controller="add_query">
+ 
+    <label for="subject">Subject of the Query</label>
+    <input type="text" ng-model="subject" placeholder="Subject of the query..">
+
+   
+    
+
+    <label for="question">Your Query</label>
+    <textarea ng-model="body" placeholder=" your query here.." style="height:200px"></textarea>
+
+    <input type="button" value="Submit" ng-click="addQuery()">
+    <a onclick="window.history.back()" class="button" style="vertical-align:middle"><span> Back</span></a>
+
+</div>
+
+</body>
+</html>
