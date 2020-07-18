@@ -4,15 +4,64 @@
 	<title>Student</title>
   <link rel="stylesheet" href="teacher.css">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+
+
+	
+	<script>
+var app = angular.module('student', []);
+app.controller('details', function($scope, $http) {
+  console.log(sessionStorage.getItem("id"));
+  $scope.name='Student';
+
+  $scope.username=' ';
+  $scope.section=' ';
+  $scope.branch=' ';
+  $scope.email=' ';
+  $scope.phone_no=' ';
+
+
+	var data = JSON.stringify({ "id":sessionStorage.getItem("id")});
+	var url = "http://127.0.0.1:8000/studentDashboard/";
+  $http({
+    method : "POST",
+    data: data,
+    url : url
+  }).then(function mySuccess(response) {
+      let user=response.data;
+      $scope.name=user[0]['first_name']+' '+user[0]['last_name'];
+
+      console.table(response.data);
+
+
+      console.log(user[0]['username']);
+  
+  $scope.username=user[0]['username'];
+  $scope.section=user[0]['section'];
+  $scope.branch=user[0]['branch'];
+  $scope.email=user[0]['email'];
+  $scope.phone_no=user[0]['phone_no'];
+      alert("Wellcome "+$scope.name);
+      
+      
+    }, function myError(response) {
+      alert(response.statusText);
+  });
+});
+
+</script>
+
+
 
 </head>
 
 
 
 <body>
-<h1 >Welcome </h1><h1 id="user">Student</h1>
 
 
+<div  ng-app="student" ng-controller="details">
+  <h1 >Welcome {{name}}</h1>
 <br><br>
  <a onclick="raiseQuery()" id="addQuery" class="button1 button2" style="vertical-align:middle"><span>Raise Query</span></a> 
 
@@ -22,26 +71,17 @@
 
 
 
-<div>
-Name :<div id="name">Name will appear here</div><br>
-Roll No. :<div id="roll_no">roll no</div><br>
-Username :<div id="username">username</div><br>
-Section :<div id="section">section</div><br>
-Branch :<div id="branch">branch</div><br>
-Email :<div id="email">email</div><br>
-Phone No. :<div id="phone_no">phone no</div><br>
-Query Status: <div id="queryStatus">None</div><br>
+<div id="name">Name : {{name}}</div><br>
+<!-- Roll No. :<div id="roll_no">rollno</div><br> -->
+<div id="username">Username : {{username}}</div><br>
+<div id="section">Section : {{section}}</div><br>
+<div id="branch">Branch : {{branch}}</div><br>
+<div id="email">Email : {{email}}</div><br>
+<div id="phone_no">Phone No. : {{phone_no}}</div><br>
+<div id="queryStatus">Query Status: None</div><br>
 
-Answer to the Query : <p id="answer">None</p><br>
-
-
-
-
-
-
-
-
-
+<p id="answer">Answer to the Query : None</p><br>
+</div>
 
 
 </body>

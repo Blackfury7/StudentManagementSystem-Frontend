@@ -4,15 +4,58 @@
 	<meta charset="utf-8">
 	
 	<title>login</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
 	<link rel="stylesheet" type="text/css" href="login.css">
 </head>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+	$scope.send=function(){
+	var data = JSON.stringify({ "username" : $scope.username , "password": $scope.password});
+	var url = "http://127.0.0.1:8000/login/";
+  $http({
+    method : "POST",
+    data: data,
+    url : url
+  }).then(function mySuccess(response) {
+      alert(response.data);
+      console.log(response);
+      let user=JSON.parse(response.data);
+      console.log(user);
+      if(user.type=='teacher'){
+      	console.log("teacher");
+      	
+      	sessionStorage.setItem("id", user.id);
+      	window.location.href = "teacher.html";
+  
+      }
+      else if(user.type=="student"){
+
+      	console.log("student");
+      	sessionStorage.setItem("id", user.id);
+      	window.location.href = "student.html";
+  
+
+      }
+      else {
+      	console.log("Invalid details")
+      }
+    }, function myError(response) {
+      alert(response.statusText);
+  });
+};
+});
+</script>
 <body>
-	
+	<div ng-app="myApp" ng-controller="myCtrl"> 
+
 	<form class="box">
 		<h1>Login</h1>
-		<input type="text" name="username" placeholder="Username">
-		<input type="password" name="password" placeholder="password">
-		<input type="button" name="" value="Login">
+		<input type="text" name="username" ng-model="username" placeholder="Username">
+		<input type="password" name="password" ng-model="password" placeholder="password">
+		<input type="button" ng-click="send()" name="" value="Login">
 	</form>
+</div>
+
 </body>
 </html>
