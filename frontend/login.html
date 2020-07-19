@@ -5,6 +5,7 @@
 	
 	<title>login</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+<script type="text/javascript" src="base.js"></script>
 	<link rel="stylesheet" type="text/css" href="login.css">
 </head>
 <script>
@@ -12,11 +13,11 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
 	$scope.send=function(){
 	var data = JSON.stringify({ "username" : $scope.username , "password": $scope.password});
-	var url = "http://127.0.0.1:8000/login/";
+	// var url = "http://127.0.0.1:8000/login/";
   $http({
     method : "POST",
     data: data,
-    url : "http://d191f9defd49.ngrok.io/teacher/login/"
+    url : backend_url+"teacher/login/"
   }).then(function mySuccess(response) {
       alert(response.data);
       console.log(response);
@@ -25,6 +26,7 @@ app.controller('myCtrl', function($scope, $http) {
       if(user.type=='teacher'){
       	console.log("teacher");
       	
+        sessionStorage.removeItem('id');
       	sessionStorage.setItem("id", user.id);
       	window.location.href = "teacher.html";
   
@@ -32,6 +34,7 @@ app.controller('myCtrl', function($scope, $http) {
       else if(user.type=="student"){
 
       	console.log("student");
+        sessionStorage.removeItem('id');
       	sessionStorage.setItem("id", user.id);
       	window.location.href = "student.html";
   

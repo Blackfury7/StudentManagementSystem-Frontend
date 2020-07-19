@@ -6,27 +6,30 @@
 	<link rel="stylesheet" href="teacher.css">
 	<link rel="stylesheet" href="query.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+	<script type="text/javascript" src="base.js"></script>
 	<script type="text/javascript" src="query.js"></script>
 
 
 </head>
-<body>
+<body style="background-image: url('https://image.shutterstock.com/image-photo/smooth-flat-vintage-paper-bag-260nw-541488106.jpg'); background-repeat: no-repeat; background-size: cover;">
 
 	<div ng-app="query" ng-controller="list">
-	<h1>List of students who raised Queries</h1><br>
-
+		<center>
+	<h1 style="font-size: 3em; font-weight: 600;">List of students who raised Queries</h1><br>
+<div style="font-size: 1.3em; font-weight: 550;">
 <span><h2 >Total number of pending Queries : <span id="queryCount">{{query_num}}</span></h2></span>
-<a onclick="window.history.back()" class="button" style="vertical-align:middle"><span> Back</span></a><br><br>
+<a href="teacher.html" class="button" style="vertical-align:middle"><span> Back</span></a><br><br>
 	<table id= "table">
  	<tr>
  		    
+ 		<th>Query Id</th>
+ 		<th>Student Id</th>
  		<th>Student name</th>
-    <th>Username</th>
+   	
  		<th>Branch</th>
  		<th>Year</th>
- 		<th>Email Id</th>
- 		<th>Phone No.</th>
- 		<th>Date/time </th>
+ 		<th>Subject of Query</th>
+ 		<th>Date </th>
  		
 
     <th>Answer Query </th>
@@ -34,13 +37,14 @@
  	</tr>
  	<tr ng-repeat="query in queries">
         <td>{{query.id}}</td>
-        <td>{{query.FIRST_NAME}} {{query.LAST_NAME}}</td>
-        <td>{{query.USERNAME}}</td>
-        <td>{{query.YEAR}}</td>
+        <td>{{query.STUDENT}}</td>
+        <td>{{query.STUDENT__FIRST_NAME}} {{query.STUDENT__LAST_NAME}}</td>
 
-        <td>{{query.BRANCH}}</td>
-        <td>{{query.EMAIL}}</td>
-        <td>{{query.CONTACT}}</td>
+        <td>{{query.STUDENT__BRANCH}}</td>
+        <td>{{query.STUDENT__YEAR}}</td>
+
+        <td>{{query.QUERY_SUBJECT}}</td>
+        <td>{{query.DATE}}</td>
 
 <td><button name="viewBtn" class="viewBtn" type="button" ng-click="redirect_to_query(query.id)">View Query</button></td>
 
@@ -50,8 +54,9 @@
 		
 	</table>
 
-
 </div>
+</div>
+</center>
 
 </body>
 </html>

@@ -16,7 +16,7 @@ app.controller('list', function($scope, $http) {
 //student list 
  	 $http({
 			 method : "GET",
-			url : "http://d191f9defd49.ngrok.io/teacher/student-list/"
+			url : backend_url+"teacher/student-list/"
   			}).then(function mySuccess(response) {
 
      		 $scope.students=response.data;
@@ -35,7 +35,7 @@ app.controller('list', function($scope, $http) {
   	 	$http({
    		 method : "POST",
     	data : JSON.stringify({"id" : id}),
-    	url :  "http://d191f9defd49.ngrok.io/teacher/delete-student/"
+    	url :  backend_url+"teacher/delete-student/"
 
        
   		}).then(function mySuccess(response) {
@@ -78,7 +78,7 @@ app.controller('add_student', function($scope, $http) {
        $http({
          method : "POST",
          data : data,
-         url : "http://d191f9defd49.ngrok.io/teacher/insert-student/"
+         url : backend_url+"teacher/insert-student/"
      }).then(function mySuccess(response) {
     alert(response.data);
    
@@ -111,7 +111,7 @@ app.controller('update_student', function($scope, $http) {
        $http({
          method : "POST",
          data : data,
-         url : "http://d191f9defd49.ngrok.io/teacher/update-student/"
+         url : backend_url+"teacher/update-student/"
      }).then(function mySuccess(response) {
     alert(response.data);
            sessionStorage.removeItem('update_id');

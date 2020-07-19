@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="teacher.css">
 
 	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+<script type="text/javascript" src="base.js"></script>
 
 
 	
@@ -15,11 +16,13 @@
   
 </head>
 	
-<body>
-	<div ng-app="teacher" ng-controller="list">
-<h1> Welcome Teacher </h1>
-<br><br>
+<body style="background-image: url('https://image.shutterstock.com/image-photo/smooth-flat-vintage-paper-bag-260nw-541488106.jpg'); background-repeat: no-repeat; background-size: cover;">
 
+	<div ng-app="teacher" ng-controller="list">
+    <center>
+<h1 style="font-size: 3em; font-weight: 600;"> Welcome Teacher </h1>
+<br><br>
+<div style="font-size: 1.3em; font-weight: 550;">
  <a href="addStudent.html" class="button1 button2" style="vertical-align:middle"><span>ADD STUDENT</span></a> 
 
 <a href="login.html" class="button" style="vertical-align:middle"><span> Logout</span></a>
@@ -61,7 +64,10 @@
 
 
       	</table>
+
+        </center>
       </div>
+    </div>
 
 </body>
 </html>

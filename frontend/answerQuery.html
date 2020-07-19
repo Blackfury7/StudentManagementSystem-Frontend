@@ -4,32 +4,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="query.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+	<script type="text/javascript" src="base.js"></script>
 <script type="text/javascript" src="query.js"></script>
 
 </head>
-<body>
+<body style="background-image: url('https://image.shutterstock.com/image-photo/smooth-flat-vintage-paper-bag-260nw-541488106.jpg'); background-repeat: no-repeat; background-size: cover;">
 
-<h3>Query Form</h3>
+<h3 style="text-align: center; font-size: 3em; font-weight: 600;">Query Form</h3>
 
-<div class="container" ng-app="query" ng-controller="answer_query">
-  
-    <span><l>Subject of the Query : </l>
-    <p id="topic" name="subject" >{{queries[query_id].query-subject}}</p></span>
+<div style="font-size: 1.3em; font-weight: 550;" class="container" ng-app="query" ng-controller="answer_query">
+   <span><l>Query ID : {{querry[0].id}} </l></span><br><br>
+   <span><l>Student ID : {{querry[0].STUDENT}} </l></span><br><br>
+
+ <span><l>Student Name : {{querry[0].STUDENT__FIRST_NAME}} {{querry[0].STUDENT__LAST_NAME}}</l>
+
+
+
+    <p id="topic" name="subject" >Subject of the Query : {{querry[0].QUERY_SUBJECT}}</p></span>
 
    
     
 
     <label for="question">Query :</label>
-    <p id="query" name="question"  style="height:200px">{{queries[query_id].query-subject}}</p>
+    <p id="query" name="question"  style="height:200px">{{querry[0].QUERY_TEXT}}</p>
 <label for="answer">Answer : </label>
     <textarea id="answer" name="answer" ng-model="reply" placeholder="Answer to the query.." style="height:200px"></textarea>
 
 
-
-    <button type="button" value="approved" ng-model="status" ng-click="answer_query()">
-    <button input type="button" value="reject" ng-model="status" ng-click="answer_query()">
+ <!-- <input type="button" value="Submit" ng-click="addQuery()"> -->
+    <input type="button" style="margin-right:250px" ng-model="status" value="Approve"  ng-click="answerQuery('Approve')">
+    <input type="button" style="background-color:red" ng-model="status" value="Reject"  ng-click="answerQuery('Reject')">
   
 </div>
+
 
 </body>
 </html>
